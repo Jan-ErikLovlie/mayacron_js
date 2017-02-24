@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- Copyright 2017 Jan-Erik Lovlie -->
+<html>
+<head>
+    <title>Mayacron Tool</title>
+    <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+
+    <!-- Load jQuery 1.9.1 minified from Google CDN -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="mayacron.js"></script>
+    <script>
+
+
+       $(document).ready(function() {
+
+         showToday();
+
+
+       });
+    </script>
+    <script type="text/javascript">
+       function showToday() {
+
+         var today = new Date();
+         var yyyy = today.getFullYear();
+         var mm = today.getMonth()+1; //January is 0!
+         var dd = today.getDate();
+
+         document.getElementById("txtYear").value = yyyy;
+         document.getElementById("txtMonth").value = mm;
+         document.getElementById("txtDay").value = dd;
+         // Set max for month handling leap years
+         // Note: This could be a separate function
+         $("#txtDay").attr("max", getNumberOfDays(yyyy,mm));
+         $("#txtDay").attr("value", dd);
+
+         var msg = "Date: " + yyyy + "." + mm + "." + dd
+         document.getElementById("result").innerHTML = msg;
+
+         showMayan();
+
+       }
+
+       function showMayan() {
+         //Store text from txtfname textbox in fname variable.
+         var year = document.getElementById("txtYear").value
+         var month = document.getElementById("txtMonth").value
+         var day = document.getElementById("txtDay").value
+         var msg = "Date: " + year + "." + month + "." + day;
+         if (year <= 1582 && month <= 10 && day <= 14) {
+            msg = msg + " Incorrect calculation!";
+         }
+
+         //Find and populate result paragraph.
+         document.getElementById("result").innerHTML = msg;
+
+         var mayanInfo = getMayan(year,month,day);
+         document.getElementById("resultMayan").innerHTML = mayanInfo;
+       }
+
+       function updateDays() {
+         var year = document.getElementById("txtYear").value
+         var month = document.getElementById("txtMonth").value
+         var numberOfDays = getNumberOfDays(year,month)
+         $("#txtDay").attr("max", numberOfDays);
+         // document.getElementById("result").innerHTML = "Days set to " + numberOfDays;
+         var day = document.getElementById("txtDay").value
+         if (day > numberOfDays) {
+            document.getElementById("txtDay").value = numberOfDays;
+         }
+       }
+
+       function getNumberOfDays(year, month) {
+         var isLeap = ((year % 4) == 0 && ((year % 100) != 0 || (year % 400) == 0));
+         return [31, (isLeap ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month-1];
+       }
+
+       function showNextDay() {
+         showAnotherDay(1);
+       }
+
+       function showPreviousDay() {
+         showAnotherDay(-1);
+       }
+
+       function showAnotherDay(shift) {
+         // get the current date values and subtract one
+         var year = document.getElementById("txtYear").value
+         var month = document.getElementById("txtMonth").value
+         var day = document.getElementById("txtDay").value
+         var currentDate = new Date(year,month-1,day);
+
+         if (shift == 1) {
+           currentDate.setDate(currentDate.getDate()+1);
+         } else {
+           currentDate.setDate(currentDate.getDate()-1);
+         }
+
+         // update the UI
+         var yyyy = currentDate.getFullYear();
+         var mm = currentDate.getMonth()+1; //January is 0!
+         var dd = currentDate.getDate();
+         document.getElementById("txtYear").value = yyyy;
+         document.getElementById("txtMonth").value = mm;
+         document.getElementById("txtDay").value = dd;
+         // Set max for month handling leap years
+         $("#txtDay").attr("max", getNumberOfDays(yyyy,mm));
+         $("#txtDay").attr("value", dd);
+
+         var msg = "Date: " + yyyy + "." + mm + "." + dd
+         document.getElementById("result").innerHTML = msg;
+
+         showMayan();
+
+       }
+
+    </script>
+
+</head>
+<body>
+    <script>
+       // Make older browser aware of new HTML5 layout tags
+       'header nav aside article footer section'.replace(/\w+/g, function (n)
+    </script>
+
+    <div id="wrapper">
+        <!-- Page header contains branding information -->
+        <header>
+          Mayacron Date Calculator
+        </header>
+
+        <!-- Article is the main context, story, or article -->
+        <article>
+
+            <div class="centerall">
+                <label for="txtYear">Year: </label>
+                <input type="number" id="txtYear" min="1000" max="9999" value="2016" style="width:50px" onchange="updateDays()" autofocus>
+                <label for="txtMonth">Month: </label>
+                <input type="number" id="txtMonth" min="1" max="12" value="7" style="width:35px" onchange="updateDays()">
+                <label for="txtDay">Day: </label>
+                <input type="number" id="txtDay" min="1" max="31" value="15" style="width:35px">
+                <input type="button" value="Calculate" onclick="showMayan()">
+                <p>
+                    <input type="button" value="Reset to Today" onclick="showToday()">
+                    <input type="button" value="Previous Day" onclick="showPreviousDay()">
+                    <input type="button" value="Next Day" onclick="showNextDay()">
+                </p>
+                <p id="result" style="color:red;"></p>
+                <p id="resultMayan" style="color:red;"></p>
+            </div><!-- End centerall div -->
+
+        </article>
+
+    </div><!-- End wrapper -->
+
+    <!-- Use JavaScript to put cursor in the textbox -->
+    <script>
+      document.getElementById("result").focus()
+    </script>
+</body>
+</html>

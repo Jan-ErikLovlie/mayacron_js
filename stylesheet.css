@@ -1,0 +1,90 @@
+/* stylesheet.css */
+
+/* Notes:
+border: border-style [width] [color]
+solid, groove, dotted, ridge, dashed, inset, double, outset, none
+*/
+
+/* Style rule for the body element */
+body{
+   background-color: White;
+   background-image:url(bkgfabric02.jpg);
+   #background-repeat:repeat-x;
+   /* Default font styling */
+   font: 10pt Arial, Helvetica, Sans-Serif;
+   color: #5d3f25;
+}
+
+/* Style rule for the wrapper div */
+#wrapper{
+   width: 900px;
+   margin:0 auto;
+   background-color: White;
+   border: solid 2px #4c2e16;
+   /* border-left: solid 2px blue; */
+   /* border-right: solid 2px blue; */
+   border-radius: 20px;
+   /* border-radius: 250px/50px; */
+   /* four values, they apply clockwise from the top-left corner. */
+   
+   /* border-top-left-radius: 80px 40px; */
+   /* border-top-left-radius: horizontal vertical */
+
+   /* box-shadow:horizontalOffset verticalOffset [blur] [spread] color [inset] */
+   box-shadow: 8px 8px 8px gray;
+   /* box-shadow: 10px 10px 8px 12px gray inset; */
+
+}
+
+/* Make HTML5 layout elements block elements for older browsers */
+header, nav, aside, article, footer, section{
+ display:block;
+}
+
+/*================================== Layout Sections */
+/*======== Styling for page header */
+header {
+   height: 80px; 
+   /* Font size, line-height, and family */
+   font: 40px/80px Impact, Gadget, Fantasy;
+   text-align: center;
+   /* Background color, image, position */
+   background-color: #d0ae8e;
+   background-image: url(pix/headerlogo.png);
+   background-repeat: no-repeat;
+   background-position: 10px center;
+   /* Round the top corners */
+   border-top-left-radius: 18px;
+   border-top-right-radius: 18px;
+}
+
+/* Style for paragraphs */
+p{
+  line-height:1.5;
+}
+
+
+/*======== Styling for the article section */
+article {
+   padding: 10px;
+   /* Left margin should match neighboring column full width */
+   margin: 0 150px;
+   border-right:solid 1px #d0ae8e;
+   border-left:solid 1px #d0ae8e;
+}
+
+/* Create raised appearance with border, rounded corners, and shadow */
+/* Works with images, tables, and block elements (div, p, and headings) */
+.raised{
+  border:solid 1px gray;
+  border-radius: 5px;
+  box-shadow:5px 5px 5px gray;
+}
+
+/* Use class="centerall" in p or div to center
+   all text and images inside the element */
+.centerall{
+    text-align:center;
+    /* Clear any floating elements */
+    clear:both;
+}
