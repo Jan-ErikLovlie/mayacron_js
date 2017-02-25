@@ -8,8 +8,8 @@ solid, groove, dotted, ridge, dashed, inset, double, outset, none
 /* Style rule for the body element */
 body{
    background-color: White;
-   background-image:url(bkgfabric02.jpg);
-   #background-repeat:repeat-x;
+   background-image:url(https://resources.blogblog.com/blogblog/data/dots/bg_dots.gif);
+   /* background-repeat:repeat-x; */
    /* Default font styling */
    font: 10pt Arial, Helvetica, Sans-Serif;
    color: #5d3f25;
@@ -17,7 +17,7 @@ body{
 
 /* Style rule for the wrapper div */
 #wrapper{
-   width: 900px;
+   width: 780px;
    margin:0 auto;
    background-color: White;
    border: solid 2px #4c2e16;
@@ -34,6 +34,8 @@ body{
    box-shadow: 8px 8px 8px gray;
    /* box-shadow: 10px 10px 8px 12px gray inset; */
 
+   overflow:auto;
+
 }
 
 /* Make HTML5 layout elements block elements for older browsers */
@@ -46,7 +48,7 @@ header, nav, aside, article, footer, section{
 header {
    height: 80px; 
    /* Font size, line-height, and family */
-   font: 40px/80px Impact, Gadget, Fantasy;
+   font: 40px/80px Papyrus, Fantasy;
    text-align: center;
    /* Background color, image, position */
    background-color: #d0ae8e;
@@ -58,6 +60,20 @@ header {
    border-top-right-radius: 18px;
 }
 
+/*======== Styling for the sidebar section (aside) */
+aside{
+   width:130px;
+   padding:10px;
+   float:left;
+   border-right:solid 1px #d0ae8e;
+   
+}
+
+aside.right {
+   float:right;
+   border-left:solid 1px #d0ae8e;
+}
+
 /* Style for paragraphs */
 p{
   line-height:1.5;
@@ -66,11 +82,9 @@ p{
 
 /*======== Styling for the article section */
 article {
-   padding: 10px;
+   padding: 20px;
    /* Left margin should match neighboring column full width */
-   margin: 0 150px;
-   border-right:solid 1px #d0ae8e;
-   border-left:solid 1px #d0ae8e;
+   margin: 0 120px;
 }
 
 /* Create raised appearance with border, rounded corners, and shadow */
@@ -81,10 +95,23 @@ article {
   box-shadow:5px 5px 5px gray;
 }
 
+/* Image floating to the left of neighboring text */
+img.left {
+  float: left;
+  width: 80%;
+  margin-right: 10px;
+}
+/* Image floating to the right of neighboring text */
+img.right {
+  float: right;
+  width: 80%;
+  margin-left: 10px;
+}
+
 /* Use class="centerall" in p or div to center
    all text and images inside the element */
 .centerall{
     text-align:center;
     /* Clear any floating elements */
-    clear:both;
+    /* clear:both; */
 }
