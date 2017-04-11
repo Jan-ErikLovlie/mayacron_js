@@ -56,6 +56,19 @@
 
          var mayanInfo = getMayan(year,month,day);
          document.getElementById("resultMayan").innerHTML = mayanInfo;
+
+         var mayanInfoArray = getMayanArray(year,month,day);
+         var mayanEnergyValue = mayanInfoArray[0];
+         var mayanDominantEnergyValue = mayanInfoArray[1];
+         var mayanDominantDayValue = mayanInfoArray[2];
+         // mayanEnergyValue, dominantMayanEnergy, dominantDay
+         var mayanEnergyName = MayanEnergyEnum[mayanEnergyValue];
+         var mayanDominantEnergyName = MayanEnergyEnum[mayanDominantEnergyValue];;
+         var mayanCombinedValues = mayanEnergyName + "(" + mayanEnergyValue + ") - Day " + mayanDominantDayValue + " of " + mayanDominantEnergyName;
+
+         document.getElementById("resultMayanArray").innerHTML = mayanCombinedValues;
+
+
        }
 
        function updateDays() {
@@ -156,6 +169,7 @@
                 </p>
                 <p id="result" style="color:red;"></p>
                 <p id="resultMayan" style="color:red;"></p>
+                <p id="resultMayanArray" style="color:blue;"></p>
             </div>  <!-- End centerall div -->
 
         </article>

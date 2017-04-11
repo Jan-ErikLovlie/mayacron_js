@@ -52,7 +52,8 @@ header {
    text-align: center;
    /* Background color, image, position */
    background-color: #d0ae8e;
-   background-image: url(pix/headerlogo.png);
+   /* TODO FIX this */
+   /* background-image: url(pix/headerlogo.png); */
    background-repeat: no-repeat;
    background-position: 10px center;
    /* Round the top corners */
