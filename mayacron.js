@@ -2,6 +2,11 @@
 
     function getMayan(yyyy, mm, dd) {
 
+      // Note: The value associated with the energy in this enum is only for calculation purposes.
+      // The Number associated with each energy changes 5 positions from year to year due to the uayeb (5 extra days). 
+      // For example:
+      // On 2018.04.13, the energy was CABAN and it fell on day 11 of the 20 day cycle.
+      // On 2018.03.03, the energy was CABAN and it fell on day 16 of the 20 day cycle.
        var MayanEnergyEnum = {
          1 : "IK",
          2 : "AKBAL",
